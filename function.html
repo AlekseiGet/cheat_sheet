@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="function">
+        <div>
+            <h3>функции</h3>
+            let messege ='Сообщение №1';//глобальная переменная
+            <br />function showMessege() {
+            <br />let messege = 'Сообщение №2';//локальная переменная
+            <br />console.log(messege);
+            <br />}
+            <br />showMessege();
+            <br />console.log(messege);
+        </div>
+        <div>
+            <h3>вызов функции из другой функции</h3>
+            function showMoreMessege() {
+            <br />console.log("Больше чем 3"); }
+            <br />function showLeesMessege() {
+            <br />console.log("Меньше чем 3"); }
+            <br />function calcSumm(numOne, numTwo, more, less) {
+            <br />let numSumm = numOne + numTwo;
+            <br />if (numSumm > 3) {
+            <br />more() ;
+            <br />} else {
+            <br />less(); }}
+            <br />calcSumm(1, 5, showMoreMessege, showLeesMessege);
+        </div>
+        <div>
+            <h3>return возврат из функции</h3>
+            function calcSumm(numOne, numtwo) {
+            <br /> let numSumm = numOne + numtwo;
+            <br /> return numSumm; }
+            <br /> let functResult = calcSumm(1, 2);
+            <br /> console.log(`Сумма: ${functResult}`);
+        </div>
+        <div>
+            <h3>рекурсия (одна функция обращается к другой)</h3>
+            function getSumm(numOne, numTwo) {
+            <br /> let numSumm = calcSumm(numOne, numTwo);
+            <br /> console.log(numSumm); }
+            <br /> function calcSumm(numOne, numTwo) {
+            <br /> return numOne - numTwo; }
+            <br /> getSumm(6, 7);
+        </div>
+        <div>
+            <h3>цикл внутри функции </h3>
+            function calcSumm(numOne, numTwo) {
+            <br /> let result = 1;
+            <br /> for (let i = 0; i &#60; numTwo; i++) {
+            <br /> result *=numOne; }
+            <br /> return result; }
+            <br />console.log(calcSumm(2, 3));
+        </div>
+        <div>
+            <h3>стрелочная функция</h3>
+            let roboMessege = (text, messege) => text + ' ещё ' + messege + '!!';
+            <h3>стрелочная многострочая функция</h3>
+            let roboMessege = (text, name) => {
+            <br /> let messege = text + " ещё " + name;
+            <br /> return messege; };
+            <br /> console.log(roboMessege('Хочу', 'денег'));
+        </div>
+        <div>
+            <h3>setTimeout- временная задержка</h3>
+            function showMessege(text, name) {
+            <br /> console.log(`${text}, ${name}!!`); }
+            <br /> showMessege("Привет", "кожаный мешок")
+            <br /> setTimeout(showMessege, 1000,'привет',"Повелитель")
+        </div>
+        <div>
+            <h3>РЕКУРСИВНЫЙ SETTIMEOUT</h3>
+            function showMessege(text, name) {
+            <br />console.log(`${text}, ${name} !`);
+            <br />setTimeout(showMessege, 1500, text, name); }
+            <br />setTimeout(showMessege, 1500, 'Привет', "Мир !")
+        </div>
+        <div>
+            <h3>РЕКУРСИВНЫЙ SETTIMEOUT и if (ЧАСЫ)</h3>
+            function showNumber(num) {
+            <br />console.log(num);
+            <br />if(num &#60; 9){
+            <br /> setTimeout(showNumber, 1000, ++num);
+            <br /> } }
+            <br /> setTimeout(showNumber, 1000, 1);
+        </div>
+        <div>
+            <h3>ПЛАНИРОВАНИЕ SETTIMEOUT SETINTERVAL clearTimeout</h3>
+            function showNumber(num) {
+            <br />console.log(num);
+            <br />let timeId = setTimeout(showNumber, 1000, ++num);
+            <br />if (num === 7) {
+            <br />clearTimeout(timeId); } }//отмена действий
+            <br />setTimeout(showNumber, 1000, 1);
+        </div>
+    
+    
+    
+    </div>
+</body>
+</html>

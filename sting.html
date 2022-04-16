@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>СТРОКА</title>
+</head>
+<body>
+    <div class="sting">
+        let text = "Если б мишки были пчёлы";
+        <h3><i class="red">.length</i> количество символов</h3>
+        console.log(text.length);
+        <h3>вывести нужный по счёту символ</h3>
+        console.log(text[0])
+        <br />console.log(text[10]);
+        <h3>вывести нужный по счёту символ но с конца</h3>
+        console.log(text[text.length - 1])
+        <h3><i class="red">.toUpperCase()</i> ВЕРХНИЙ РЕГИСТР</h3>
+        console.log(text.toUpperCase());
+        <h3><i class="red">.toLowerCase()</i> нижний регистр</h3>
+        console.log(text.toLowerCase());
+        <h3><i class="red">.indexOf()</i> поиск покажет где</h3>
+        console.log(text.indexOf( "шки"));
+        <h3><i class="red">.indexOf()</i> поиск начиная с № символа</h3>
+        console.log(text.indexOf( "шки",10));
+        <h3><i class="red">.includes()</i> поиск булевый ответ</h3>
+        console.log(text.includes('шки'));
+        <h3><i class="red">.includes()</i> поиск начиная с № символа булевый ответ</h3>
+        console.log(text.includes('шки', 10));
+        <h3><i class="red">.startsWith()</i>поиск в начале, булевый ответ</h3>
+        console.log(text.startsWith('Есл'));
+        <h3><i class="red">.endsWith()</i> поиск с конца, булевый ответ</h3>
+        console.log(text.endsWith("чёлы"));
+        <h3><i class="red">.slice(2, 7) покажет часть строки от 2 до 7</i></h3>
+        console.log(text.slice(2, 7));
+        <h3>Сравнивание строк</h3>
+        console.log(text.toLocaleLowerCase().includes(textTwo.toLocaleLowerCase()));
+        <br />//Предварительно переведя обе строки в нижний регистр
+        <div>
+            <h3>Сравнивание строк и чисел</h3>
+            <br />console.log(1 > 2); //false
+            <br />console.log("44" === 44); //false
+            <br />console.log('44' !== 44); //true
+            <br />console.log("44" == 44); //true
+            <br />console.log('44' != 44); //false
+        </div>
+        <h3>соединение строк</h3>
+        `${text}, ${name}!`
+        <div>
+            <h3>|| Или - true</h3>
+            <br />console.log(1 || 0); //1
+            <br />console.log(true || "Alexsei"); //true
+            <br />console.log(null || 56); // 56
+            <br />console.log(null || "Alexsei"); //Alexsei
+            <br />console.log(undefined || '' || null || 0); //0
+        </div>
+        <div>
+            <h3> && И - false</h3>
+            <br />console.log('aleksei' && 0 && 2);//0
+            <br />console.log(1 && 2 && null && 3);//null
+        </div>
+        <div>
+            <h3>! Не (отрицание) </h3>
+            console.log(!true && 65 || 33 && !1);//false
+        </div>
+        <div>
+            <h3>?? сравнивает с null и возвращает оперантд если он не null или undefined </h3>
+            <br />console.log(name ?? 'нет имени' ?? '');//нет имени
+        </div>
+    </div>
+</body>
+</html>

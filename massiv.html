@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Массив</title>
+</head>
+
+<body>
+<div class="massiv">
+    <h2>Масив</h2>
+    let obj = {}; //ОБЪЕКТ
+    <br /> let <i class="green">mass</i> = [];//МАССИВ
+    <div>
+        arr = ["Алексей",
+        {
+        <br />age: 45,
+        <br />type: "JS",
+        <br />adress:{
+        <br />city: "Taganrog",
+        <br />street: "Oktyabrskaya",
+        <br />hous: 72,
+        }
+        },
+        <br />"Наташа", "Валера", "Маша", "Света", "Василий",
+        ];
+    </div>
+    <div>
+        <h3>определение массив это или объект</h3>
+        if (<i class="red"> Array.isArray(<i class="green">mass</i> )</i>) { //определение массив это или объект
+        <br /> console.log("Это массив");
+        }
+        <br /> else{
+        <br /> console.log("Это объект");
+        }
+    </div>
+    <h3>узнать длинну массива</h3>
+    console.log(arr.length);
+    <h3>вызвать 2-й эллемент из массива</h3>
+    console.log(arr[2]);
+    <h3>вызвать св-во по ключу объекта в массиве</h3>
+    console.log(arr[1].age);
+    <h3>укоротил массив</h3>
+    arr.length = 3;
+    <h3>удалил первый эллемент</h3>
+    arr.shift();
+    <h3>удалил последний эллемент</h3>
+    arr.pop();
+    <h3>удалил 2 эллемента начиная с нулевого</h3>
+    arr.splice(0, 2)
+    <br />0 это место эллемента с которого начинаю взаимодействие
+    <br />2 это колличество эллементов
+    <h3>заменил один эллемент на другой</h3>
+    arr.splice(0, 1, {
+    <br />age: 100,
+    <br />type: "JS+ noteJS",
+    <br />adress: {
+    <br />city: "Moskov",
+    <br />street: "Smolenskaiy",
+    <br />hous: 13,
+    }}, )
+    <br />или
+    <br />arr.splice(0, 1, "Петя");
+
+    <h3>добавил первый эллемент</h3>
+    arr.unshift("Алексей");
+    <h3>добавил в конец эллемент</h3>
+    arr.push("Василий");
+    <h3>добавил на место №2</h3>
+    arr.splice(2, 0, "Наташа", "Валера",)
+    <h3>откопировал массив и сделал его строкой</h3>
+    let str = arr.join(",");
+    <h3>строку сделал массивом</h3>
+    let massiv = str.split(",");<i class="blue">//откопировал строку в новую переменную и сделал её массивом, но внутри
+        без объектов</i>
+    <h3>копирую часть массива в новый массив</h3>
+    let dubl = arr.slice(1, 5)
+    <h3>копирую весь мвссив в новый и добавляю новое свойство</h3>
+    let famili = arr.concat("Семья");
+    <h3>ищем, покажет позицию</h3>
+    console.log(arr.indexOf("Наташа"))
+    <h3>ищем начиная с конца, покажет позицию</h3>
+    console.log(arr.lastIndexOf("Анатолий"));
+    <h3>ищем указывая с какого места, получая true или false</h3>
+    console.log(arr.includes("Наташа", 3));
+    <h3>найдёт эллемент с указаными параметрами ключа объекта</h3>
+    let result = arr.find(function(item,index,array){
+    <br />return item.age === 45 ;
+    })
+    <br />console.log(result);
+    <h3>найдёт эллемент с указаными параметрами ключа объекта, прекратит поиск и покажет номер позиции</h3>
+    let resultTwo = arr.findIndex(item => item.age === 45);
+    <br />console.log(resultTwo);
+    <h3>добавил новый объект в массив</h3>
+    arr.splice(4, 0, {
+    <br />age: 45,
+    <br />name: "Aleksei",
+    })
+    <h3>найдёт все эллементы с указаными параметрами ключа объекта</h3>
+    let resultTree = arr.filter(function(item, index, array){
+    <br />return item.age >= 44; //найдёт все эллементы с указаными параметрами ключа объекта
+    })
+    <br />console.log(resultTree);
+    <h3>сортировка в алфавитном порядке А-Я</h3>
+    console.log(arr.sort());
+    <h3>сортировка с цифрами но плохо работает</h3>
+    console.log(num.sort());
+    <h3>ФУНКЦИЯ ДЛЯ ПРАВИЛЬНОЙ СОРТИРОВКИ ЧИСЕЛ</h3>
+    function sortNum(a, b) {
+    <br />console.log(`Сравниваем ${a} и ${b}`);
+    <br />if (a > b) return 1;
+    <br />if (a === b) return 0;
+    <br />if (a &#60; b) return -1; } console.log(num.sort(sortNum));
+    <br />console.log(num.sort(sortNum)); //сортировка чисел через функцию
+    <h3>короткая запись сортировки чисел</h3>
+    console.log(num.sort((a, b) => a - b ));
+    <h3>сортировка реверсом Я-А</h3>
+    console.log(arr.reverse());
+    <h3>Создал новый массив состоящий эллементов донора,объекты стали undefined </h3>
+    let newMass = arr.map(function(item, index, array){
+    <br />return item[1]<i class="blue"> //эллементы будут знаками №1 из эллементов доноров</i>
+    <br />return array[1]<i class="blue">//все эллементы будут как элленент №1 из донора</i>
+    <br />return index[1]<i class="blue">//незнаю что будет</i>
+    })
+    <br />console.log(newMass);
+    <h3>Цикл выводящий по очереди все элементы массива</h3>
+    for (let i = 0; i &#60; arr.length; i++)
+    <br />{ console.log(arr[i]); }
+    <h3>Ещё один цикл выводящий по очереди все элементы массива</h3>
+    for (let arrItem of arr) {
+    <br />console.log(arrItem);
+    }
+    <h3>Метод перебора forEach</h3>
+    arr.forEach(function(item, index, array){
+    <br />console.log(`${item} находитса на ${index} месте, в массиве ${array}`);
+    })
+    <h3>Ещё один метод перебора но ФУНКЦИЕЙ</h3>
+    arr.forEach(arrFor);
+    <br />function arrFor (item) {
+    <br />console.log(item);
+    }
+</div>
+</body>
+
+</html>

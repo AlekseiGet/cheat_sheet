@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Объект</title>
+</head>
+<body>
+    <div class="odject">
+        <div>
+            <h3>Создание объекта</h3>
+            let userInfo = {
+            <br />name: "Алексей",
+            <br />age: 45, }
+            <h3>заменил значение</h3>
+            userInfo.name = 'Getmanov';
+            <h3>добавил в объект</h3>
+            userInfo.age = 45;
+            <br />userInfo['twoo string'] = true;
+            <br /> userInfo.adress = {
+            <br /> city: "Taganrog",
+            <br /> street: 72, }
+            <h3>удалил из объекта</h3>
+            delete userInfo.age;
+            <br /> delete userInfo['twoo string'];
+    
+        </div>
+        <div>
+            <h3>вызов объекта целиком</h3>
+            userInfo;
+            <h3>вызов свойств через "ключь"</h3>
+            userInfo.age, userInfo.auto;
+            <h3>переменная равна ключу объекта</h3>
+            let key = userInfo.age;
+            <h3>вызывть по имени переменной</h3>
+            console.log(userInfo[key]);
+            <h3>0 - тоже может быть именем объекта <br />[userOne + "javaScript"]: true,//сложил переменную и какую то
+                строку присвоив им значение</h3>
+            userInfo[0];//вызывть по имени переменной
+            <br /> userInfo["likesjavaScript"]//вызывть по имени переменной
+        </div>
+        <div>
+            <h3>СИМВОЛ</h3>
+            let id = Symbol('id');
+            <br />let userInfo = {
+            <br />name : 'Aleksei',
+            <br />[id]: "Кое что", };
+            <br />console.log(userInfo[id]);
+        </div>
+        <div>
+            <h3>вложености</h3>
+            let userInfo = {
+            <br /> name: "Aleksei",
+            <br /> age: 45,
+            <br /> <i class="red"> adress: {
+                <br /> city: "Taganrog",
+                <br /> street: "Oktyabrskaya",
+                <br /> nomber: {
+                <br /> secret: 72, } } </i> }
+            <br /> console.log(userInfo.adress.nomber);//вызов вложености
+        </div>
+        <div>
+            <h3>копирование</h3>
+            let user = userInfo;
+            <h3>Дублирование</h3>
+            let user = Object.assign({},userInfo);
+            <h3>дублирование и добавление новых свойств</h3>
+            let userNew = Object.assign(userInfo, {adress: "Taganrog", ['likes hobby']: "Java Script"});
+        </div>
+        <div>
+            <h3>опциональная цепочка поиск через ?</h3>
+            if (<i class="red">userInfo?.adress?.city</i>) {//без ? будет ошибка
+            <br /> console.log(userInfo.adress.city) }
+        </div>
+        <div>
+            <h3>перебрать внутриности объекта</h3>
+            let userInfo = {
+            <br /><i class="red">name:</i><i class="blue"> "Aleksei",</i>
+            <br /><i class="red">age:</i><i class="blue"> 45,</i>
+            <br /><i class="red">adress:</i><i class="blue">{</i>
+            <br /><i class="green">city:</i> <i class="orange">"Taganrog",</i>
+            <br /><i class="green">street:</i><i class="orange"> "Oktyabrskaya",</i>
+            <i class="blue">}</i>
+            }
+            <br /> console.log(userInfo);
+            <br /> <i class="red">for (let key in userInfo){
+                <br />console.log(key);
+                }</i>
+            <br /> <i class="blue">for (let keyTwoo in userInfo){
+                <br />console.log(userInfo[keyTwoo]);
+                }</i>
+            <br /><i class="green">for (let keyTree in userInfo.adress){
+                <br />console.log(keyTree);</i>
+            <br /><i class="orange">console.log(userInfo.adress[keyTree]);</i>
+            }
+        </div>
+        <div>
+            <h3>функция внутри объекта</h3>
+            <i class="orange">let userInfo = {
+                <br />name: "Василий",
+                <br />age: 45,
+                <br />showInfo(){
+                <br />console.log(`${this.name}`);
+                }
+                }</i>
+            <br />let user = userInfo;<i class="blue">//копирование </i>
+            <br />userInfo = null;<i class="blue">//первый объект равен null</i>
+            <br />user.showInfo();<i class="blue">//вызов функции из объекта всё равно возможен</i>
+            <br />console.log(user);<i class="blue">// возвращается объект</i>
+            <br />console.log(userInfo);<i class="blue">//возвращается null</i>
+        </div>
+        <div>
+            <h3>Создание объектов по шаблону</h3>
+            <br /><i class="green">function UserInfo(name, age) {
+                <br />this.name = name;
+                <br />this.age = age || 'неизвестно';
+                }</i>// Шаблон
+            <br />console.log(<i class="orange">new UserInfo ('Aleksei',45)</i>);//объект
+            <br />UserInfo.age = 40;<i class="blue">// неполучается изменить свойство, ПОЧЕМУ? потому что UserInfo не объект
+                а функция</i>
+            <br />console.log(<i class="orange">new UserInfo("Nataliya")</i>);//объект
+            <br />console.log(<i class="orange"> new UserInfo('',13)</i>);//объект
+        </div>
+    
+    
+    
+    
+    
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="cycle">
+        <div>
+            <h3>Цикл do цикл сработает как минимум один раз</h3>
+            let num = 0;
+            <br />do {
+            <br />console.log(num);
+            <br />num++;
+            <br />} while (num &#60; 0);
+        </div>
+        <div>
+            <h3>Прерывание цыкла break</h3>
+            let num = 0;
+            <br />for (; num &#60; 9;){
+            <br /> num ++;
+            <br /> console.log(num);
+            <br /> if (num==3)break;//Работа окончена! };
+        </div>
+        <div>
+            <h3>continue Прерывание и начало новой итерации</h3>
+            let num = 0;
+            <br />for (; num
+            < 5; num++){ <br /> if (num==2)continue;
+            <br /> console.log(num);}
+    
+        </div>
+        <div>
+            <h3>firstFor метка для выхода на внешний цикл</h3>
+            firstFor: for (let num = 0; num &#60; 2; num++){
+            <br /> for (let size=10; size &#60; 13; size++){
+            <br /> if (size==12 ){
+            <br /> continue firstFor;// переход на внешний цикл
+            <br /> // break firstFor; или прерываем
+            <br /> }console.log(size);
+            <br /> } console.log(num); }
+        </div>
+    </div>
+</body>
+</html>

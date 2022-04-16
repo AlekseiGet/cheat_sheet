@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Сраванивание</title>
+</head>
+<body>
+    <div class="comparison">
+        <h2>CРАВНИВАНИЕ</h2>
+        <h3>? вместо if else</h3>
+        <div class="comparison_long long">
+            <h3>длинный через - if</h3>
+            let messegeName ;
+            <br />if (5>1) {
+            <br />messegeName = ', Алексей!';
+            <br />} else {
+            <br />messegeName = ', Наташа!';ф
+            <br />}
+            <br />messege = messege + messegeName;
+        </div>
+        <div class="comparison_cor cor">
+            <h3>короткий через - ?</h3>
+            let messege = 'hello';
+            <br />let messegeName = (5 &#60; 1) ? ', Aleksei!' : ', Natahsa!' ; messege +=messegeName;
+        </div>
+        <div class="comparison_longTwo long">
+           <h3>сравнивание через else if</h3>
+            let messege = 'Привет';
+            <br /> let messegeName;
+            <br /> if (5 > 50) {
+            <br /> messegeName = "Aleksei";
+            <br /> } else if (5 > 30) {
+            <br /> messegeName = ", Natasha!";
+            <br /> } else if (5 > 20) {
+            <br /> messegeName = ", Valera!";
+            <br /> } else if (5 > 10) {
+            <br /> messegeName = ", Masha!";
+            <br /> }else {
+            <br /> messegeName = ", Babushka";
+            }
+            <br /> messege += messegeName;
+        </div>
+        <div class="comparison_corTwo cor">
+            <h3>Тоже самое сравнивание но через ?</h3>
+            let messege = 'Привет';
+            <br /> let messegeName = 5 > 50 ? ', Aleksei': 5 > 30 ? ', Natasha': 5 > 20 ? ', Valera': 5 > 10 ? ', Masha': ',
+            Babushka';
+            <br /> messege += messegeName;
+        </div>
+    </div>
+</body>
+</html>

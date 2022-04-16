@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Числа</title>
+</head>
+<body>
+<div class="num">
+    <h2> Число 255</h2>
+    let <i class="green">num</i> = 255;
+    <br />
+    <h3>Вызвать 255 шеснацатиричным способом</h3>
+    console.log(0xff);
+    <h3>Вызвать 255 восмиричным способом</h3>
+    console.log(0o377);
+    <h3>Вызвать 238 двоичным способом</h3>
+    console.log(0b11101110);
+    <div class="math">
+        <h2>Math - Округление числа</h2>
+        let num = 1.12345;
+        <br />
+        <h3>Math.round- до ближайшего целого числа</h3>
+        let numOne = Math.round(num ); = 1
+        <h3>Math.floor - в меньшую сторону</h3>
+        let numOne = Math.floor(num ); = 1
+        <h3>Math.ceil - в большую сторону</h3>
+        let numOne = Math.ceil(num ); = 2
+        <h3>Math.random() - случайное число включая 0 до 1 не включая</h3>
+        console.log(Math.random());
+        <h3>Math.max() - наибольшее число из перечисленных</h3>
+        console.log(Math.max(1, 2, 4, 5, 67, 66));
+        <h3>Math.min() - наименьшее число из перечисленных</h3>
+        console.log(Math.min(1, 2, 4, 5, 67, 66));
+        <h3>Math.abs() - абсолютное число</h3>
+        console.log(Math.abs(-58));
+        <h3>Math.pow() - возведение числа в степень</h3>
+        console.log(Math.pow(n,p));
+        <br /> n - число
+        <br /> p - в степени
+        <h3>.trim() - вырезание пробелов "лишних" с переди и с зади</h3>
+        <h3>.repeat() Повторение</h3>
+        что.repeat(сколько раз)
+
+    </div>
+
+    <h3>num.toFixed() - количество знаков после запятой надо сократить</h3>
+    let numOne = num.toFixed(2); Но переменная станет strihg
+    <br /> вылечить можно <i class="red">+</i>num.toFixed(2)
+    <h2>Проблема неточных чисел</h2>
+    let problem = 0.1 + 0.2;
+    <br /> if (problem === 0.3) {
+    <br /> console.log(problem);
+    <br /> }else {
+    <br /> console.log(`а получилось: ${problem}`);
+    };
+    <br /><i class="red">а получилось: 0.30000000000000004</i>
+    <h3>Number.EPSILON - бесконечно малое число для исправления проблемы неточных чисел</h3>
+    let problem = 0.1 + 0.2;
+    <br />problem = Math.round(problem * 100) / 100;<i class="blue">// лекарство</i>
+    <br />problem = +problem.toFixed(1);<i class="blue">// лекарство НО строка, которая лечится +</i>
+    <br />problem = problem + Number.EPSILON;<i class="blue">//не помогает</i>
+    <h3><i class="red">parseInt</i> - покажет число до возникновения ошибки или nan</h3>
+    let str = "0xff";
+    <br />str = parseInt("0xff", 16);
+    <br /> Второй параметр переводящий число в 2ичный , 8ричный, 16ричный вид НЕОБЯЗАТЕЛЕН
+    <h3><i class="red">parseFloat</i>покажет число c плавающей запятой до возникновения ошибки или nan</h3>
+    let value = "158.35px";
+    <br />console.log(parseFloat(value));
+    <h3><i class="red">toString</i> вернёт в строковом виде</h3>
+    console.log(<i class="green">num</i><i class="red">.toString(16)</i>);<i class="blue">//шеснадцатиричное </i>
+    <br />console.log(<i class="green">num</i><i class="red">.toString(2)</i>);<i class="blue">//двоичное </i>
+    <br />console.log(<i class="green">num</i><i class="red">.toString(8)</i>);<i class="blue">//восьмиричное </i>
+    <h3> isNaN - Проверка на равенство NAN</h3>
+    <br />let vetvl = 58 * "Aleksei";
+    <br />if (isNaN(vetvl)) {
+    <br />console.log('Результат выражения NaN');
+    }
+
+</div>
+
+</body>
+</html>

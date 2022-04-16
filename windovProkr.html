@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Окно браузера</title>
+</head>
+<body>
+   <div class="wrapper">
+       <h2>Окно браузера</h2>
+       <br/>
+       <h3>сначала получи доступ к body</h3>
+const mainElement = document.documentElement;
+       <h3>Получил ширину окна</h3>
+let mainElementWidth = mainElement.clientWidth;
+    <h3>Получил высоту окна</h3>
+let mainElementHeight = mainElement.clientHeight;    
+    <h3>Получил ширину окна но вместе с шириной бегунка прокрутки</h3>
+ let windowWidth = window.innerWidth;    
+    <h3>//Получил высоту окна но вместе с шириной бегунка прокрутки</h3>
+ let windowHeight = window.innerHeight;  
+    <h3>Полная ширина + скрытая прокрутка</h3>
+let scrollWidth = Math.max(
+ <br/>document.body.scrollWidth, document.documentElement.scrollWidth,
+ <br/>document.body.offsetWidth, document.documentElement.offsetWidth,
+ <br/>document.body.clientWidth, document.documentElement.clientWidth
+);
+  <h3>Полная Высота + скрытая прокрутка</h3>
+let scrollHeight = Math.max(
+ <br/>document.body.scrollHeight, document.documentElement.scrollHeight,
+ <br/>document.body.offsetHeight, document.documentElement.offsetHeight,
+ <br/>document.body.clientHeight, document.documentElement.clientHeight
+);
+   <h3>Получить количество прокрученых пикселей</h3>
+<br/>let windowScrollTop = window.pageYOffset; <i class="blue">// По Y</i>
+<br/>let windowScrollLeft = window.pageXOffset; <i class="blue">//По X</i>
+<br/>console.log(window.pageYOffset); <i class="blue">Почему всегда показывает 0 ??????</i>
+   <h3>Прокручивать на (количество по X,количество по Y)</h3>
+function setScrollBy () {
+<br/>window.scrollBy(0, 50);
+<br/>console.log(window.pageYOffset);
+};
+<br/>setScrollBy()
+   <h3>Прокрутить на указаные координаты</h3>
+function setScrollTo() {
+<br/>window.scrollTo(0, 1750);
+<br/>console.log(window.pageYOffset);
+};
+<br/>setScrollTo();
+    <h3>прокрутка ПЛАВНАЯ (не работает в сафари)</h3>
+    function setScrollToOptions() {
+ <br/>        window.scrollTo({
+ <br/>        top: 500,
+ <br/>        left: 0,
+ <br/>        behavior: 'smooth'<i class="blue">// плавно</i>
+ <br/>          <i class="blue"> //'smooth', 'instant', 'auto'-по умолчанию</i>
+    });
+    }
+ <br/>   setScrollOption()
+      <h3>прокрутка указанного объекта в верх или вниз </h3>
+    const lessonSelected = document.querySelector('.lesson__item');
+   <br/>   function setScrollInfoView(top) {
+   <br/>   lessonSelected.scrollIntoView(top);
+    }
+   <br/>   setScrollInfoView(false);<i class="blue">в верх "страници" (true), в низ (false)</i>
+       <h3>Прокрутка на указанные координаты</h3>    
+function setScrollInfoViewOptions(top) {
+<br/>lessonSelected.scrollIntoView({
+<br/>block: 'center',<i class="blue">//по вертикали</i>
+<br/>inline: 'nearest',<i class="blue">//по горизонтали</i>
+<br/>behavior: 'smooth',<i class="blue">//плавная прокрутка</i>
+})
+};
+<br/>setScrollInfoViewOptions(true);
+      <h3>Получить набор координат объекта</h3>
+    const getItemCoords = lessonSelected.getBoundingClientRect();
+    <i class="blue">
+<br/>bottom: 376 это top + height
+<br/>height: 57 высота объекта
+<br/>left: 30 расстояние с лева до левого края
+<br/>right: 135.3125 положение правого края объекта относительно лева
+<br/>top: 319 расстояние сверху до верхнего края объекта
+<br/>width: 105.3125 ширина объекта
+<br/>x: 30
+<br/>y: 319
+</i>
+      <h3>Получить конкретное значение объекта</h3>
+const getItemCoordsLeft =lessonSelected.getBoundingClientRect().left;
+<br/>
+   <h2>МЕТРИКИ</h2>
+
+   </div> 
+</body>
+</html>

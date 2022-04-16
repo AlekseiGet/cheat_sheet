@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>reduce</title>
+</head>
+
+<body>
+<div class="reduce">
+    <h2>reduce end reduceRight</h2>
+    <br />
+    <h3>вычисления на основе массива какого-либо единого значения (с числами)</h3>
+    let numValue = num.reduce(function(previosValue, item, index, array){
+    <br />return item + previosValue
+    <br />},0);
+    <br />console.log(numValue);
+    <br /><i class="blue">previosValue - это результата дийствия прошлой итерации цикла</i>
+    <br /><i class="blue">0 - это чему равен previosValue в первый раз, если не подставить "0", то он будер равен
+        первому значению</i>
+    <h3>вычисление единого значения на основе всего массива. Выведет весь массив записаный в строку</h3>
+    let arrValue = arr.reduce(function(previosValue, item, index, array) {
+    <br />return `${previosValue}, ${item}`;
+    <br />});
+    <br />console.log(arrValue);
+    <h3>Добавил нечисловое значение - НЕХОРОШО!!!</h3>
+    arr.famili = "Getmanov";//все будут числовые а этот - famili
+    <h3>Найти и показать если есть</h3>
+    let result = arr.find(function (item, index, array) {
+    <br />return item === "Паша";
+    <br />});
+    <br />console.log(result);
+</div>
+</body>
+
+</html>

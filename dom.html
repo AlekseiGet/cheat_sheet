@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document Object Model</title>
+</head>
+<body>
+     <h2>document object model</h2>
+    <div class="receive">
+     <h2>Получить </h2>
+    <h3>Получить полностью html объект</h3>
+    const htmlElement = document.documentElement;
+    <h3>Получить head объект полностью со всем содержимим</h3>
+    const headElement = document.head;
+    <h3>Получить body объект полностью со всем содержимим</h3>
+    const bodyElement = document.body;
+    <h3>Только после получения body -- ПЕРВЫЙ объект</h3>
+    const firstChildNode = bodyElement.firstChild;
+    <h3>Первый эллемент</h3>
+    const firstChil = bodyElement.firstElementChild;
+    <h3>Только после получения body -- ПОСЛЕДНИЙ объект</h3>
+    const lastChildNode = bodyElement.lastChild;
+    <h3>Последний эллемент</h3>
+    const lastChil = bodyElement.lastElementChild;
+    <h3>Список-коллекция всех детей-эллементов включая узлы</h3>
+    const childNodes = bodyElement.childNodes;
+   <h3>Список-коллекция всех детей-эллементов БЕЗ узлов</h3>
+   const bodyChildren = bodyElement.children;
+   <h3>Предыдущий узел</h3>
+   const previousSiblingNode = bodyElement.previousSibling;
+   <h3>Предыдущий эллемент</h3>
+   const previousSibling = bodyElement.previousElementSibling;
+   <h3>Следующий узел</h3>
+const nextSiblingNode = bodyElement.nextSibling;
+   <h3>Следующий элемент</h3>
+const nextSibling = bodyElement.nextElementSibling;
+   <h3>Родительский узел</h3>
+const parentNode = bodyElement.parentNode;
+   <h3>Поиск по имени класса</h3>
+const elemsOne = document.querySelectorAll('.lesson__item-list');
+<br/>const lessonBlock = document.querySelector('.lesson');
+<br/>const title = document.querySelector('h3');
+   <h3>Поиск по селектору тега</h3>
+const elemsTwo = document.querySelectorAll('li');
+   <h3>Поиск по тегу и имени класса</h3>
+const elemsTree = document.querySelectorAll('li.lesson__item-list');
+   <h3>Поиск всех (li) в эллементе с именем класса .lesson__list</h3>
+const elemsFour = document.querySelectorAll('.lesson__list>li')[0];
+   <h3>Поиск всех эллементов с именами классов через запятую</h3>
+const elemsFive = document.querySelectorAll('.lesson__list, .lesson__text');
+   <h3>Поиск всех эллементов "lesson__item-list" внутри "lesson__list"</h3>
+const elemsSix = document.querySelectorAll('.lesson__list .lesson__item-list')
+   <h3>Поиск по id</h3>
+const elemsSeven = document.querySelectorAll('#listItem');
+   <h3>Поиск по атрибуту (например- data)</h3>
+const elemsEight = document.querySelectorAll('[data-item');
+   <h3>Поиск па атрибуту с уточнениемю.</h3>
+const elemsNine = document.querySelectorAll('[data-item="85');
+   <h3>Вывел эллемент чтобы на него можно было ссылаться</h3>
+const subList = document.querySelectorAll(".lesson__sub-list");
+   <h3>Поиск в эллементе нужного мне</h3>
+const subItems = subList[0].querySelectorAll('li');
+   <h3>Выведет не коллекцию а ПЕРВЫЙ элемент совпадающий с запросом на селектор</h3>
+const subListNoAll = document.querySelector(".lesson__text");
+<br/>// или ...orAll(".lesson__sub-list")[0];
+</div>
+    <div class="change">
+        <h3> Изменить</h3>
+        <div class="inner">
+        <h3>ИЗМЕНЕНИЕ <i class="red">innerHTML</i></h3>
+        <br />
+        <h3>Получил СОДЕРЖИМОЕ эллемента</h3>
+        const textElementContent = subListNoAll.innerHTML;
+        <h3>Изменил содержимое эллемента .lesson__text</h3>
+        subListNoAll.innerHTML = "Упорство и труд всё перетрут";
+        <h3>Добавил к содержимому эллемента</h3>
+        subListNoAll.innerHTML = `<p> ${textElementContent}</p>
+        <p>Упорство и <span class="yellow"> труд всё</span> перетрут</p>`;
+        <h3>Вывел в консоль содержимое эллемента ЗАПИСЬ НОВАЯ С ИЗМЕНЕНИЯМИ</h3>
+        console.log(subListNoAll.innerHTML);
+        </div>
+        <div class="outer">
+            <h3>Изменение <i class="red">outerHTML</i></h3>
+            <br />
+            <h3>Получил СОДЕРЖИМОЕ эллемента вместе тегами со всем содержимым</h3>
+            const textElementContent = subListNoAll.outerHTML;
+            <h3>Добавил к содержимому эллемента</h3>
+            subListNoAll.outerHTML = `<p> ${textElementContent}</p>
+            <p>Упорство и <span class="yellow"> труд всё</span> перетрут</p>`;
+            <h3>Вывел в консоль содержимое эллемента ЗАПИСЬ СТАРАЯ ДО ИЗМЕНЕНИЙ</h3>
+            console.log(subListNoAll.outerHTML);
+        </div>
+        <div class="coment">
+            <h3>Изменение коментария</h3>
+            <br/>
+            <h3>эллемент перед коментарием</h3>
+            const getElement = document.querySelector(".lesson__list");
+            <h3>сам коментарий</h3>
+            const subListKoment = getElement.nextSibling;
+            <h3>изменил коментарий</h3>
+            subListKoment.data = "Новый коментарий";
+        </div>
+</div>
+    <div class="create">
+        <h3>Создание нового Тега</h3>
+        const newElement = document.createElement('div');
+       <h3>Создал новый текстовый эллемент</h3>
+    const newTextElement = document.createTextNode('<p> ${textElementContent}</p>
+    <p>Упорство и <span class="yellow"> труд всё</span> перетрут</p>');
+       <h3>Наполнил новый тег</h3>
+    newElement.innerHTML = `<p> ${textElementContent}</p>
+    <p>Упорство и <span class="yellow"> труд всё</span> перетрут</p>`;
+     <h3>ВСТАВКА НЕ РАБОТАЕТ ЕСЛИ ДО ЭТОГО В НЕГО ИСПОЛЬЗОВАЛИ outerHTML
+    <br/>Работает только одна вставка</h3>
+    <h3>Вставил его после переменной subListNoAll</h3>
+    subListNoAll.after(newElement);
+    <h3>Вставил его до переменной subListNoAll</h3>
+    subListNoAll.before(newElement);
+    <h3>Вставил его внутрь и в начало переменной subListNoAll</h3>
+    subListNoAll.prepend(newElement);
+    <h3>Вставил его внутрь и в конец переменной subListNoAll</h3>
+    subListNoAll.append(newTextElement);
+    <h3>append(`при вставке <span> теги </span> пропишутся как обычный текст `);</h3>
+
+
+</div>
+    <div>
+    <h3>Перенос эллемента</h3>
+    lessonBlock.after(title)
+    <br/>относительноЧего.куда(что);
+    <h3>Клонирование эллемента</h3>
+    const newTitle = title.cloneNode(true);<i class="blue">//создал клон, True-значит вместе со всем содержимым</i>
+    <br />lessonBlock.before(newTitle); <i class="blue">// Указал где ему появится, без этого его нет</i>
+    <h3>Удалить эллемент</h3>
+    title.remove();
+    <h3>Вставить строку с НЕРАБОТАЮЩИМ HTML</h3>
+    subListNoAll.insertAdjacentText(<i class="blue">//Вставить строку с НЕРАБОТАЮЩИМ HTML</i>
+    <br/>'afterbegin',<i class="blue">//Куда вставим</i>
+    <br/>`<p> ${textElementContent}</p> <p>Упорство и <span class="yellow"> труд всё</span> перетрут</p>`
+    )
+    <h3>Вставить строку с работающим HTML</h3>
+    subListNoAll.insertAdjacentHTML(<i class="blue">//Вставить строку с работающим HTML</i>
+    <br/>'afterbegin', <i class="blue">//Куда вставил</i>
+    <br/>`<p> ${textElementContent}</p> <p>Упорство и <span class="yellow"> труд всё</span> перетрут</p>`
+    );
+    <h3>Вставил новый div</h3>
+    subListNoAll.insertAdjacentElement(<i class="blue">//Вставил новый div</i>
+     <br/>'afterbegin', <i class="blue">//Куда вставил</i>
+     <br/>newElement <i class="blue">//Новая переменная с текстом не вставляется, только наполненый div</i>
+    )
+
+
+
+</div>
+    <div class="liveColleksh">
+        <h3>Живая коллекция</h3>
+        <br/>
+        <h3>Поиск по id</h3>
+        const elemsbyId = document.getElementById('listItem');
+        <h3>Поиск по тегу</h3>
+        const elemsByTag = document.getElementsByTagName('ul');
+        <h3>Поиск по имени класса</h3>
+        const elementByClass = document.getElementsByClassName('lesson__item-list');
+        <h3>Получить всех потомков</h3>
+        const elementByClassStar = document.getElementsByTagName('*')
+        <h3>Поиск по атрибуту name</h3>
+        const elementByName = document.getElementsByName('list');
+</div>
+   <div>
+       <h3>Поиск предка соответствующего CSS селектору</h3> 
+       <h3>Называем потомка</h3>
+    const elemsDescendant = document.querySelectorAll('.lesson__item-sub-list')[2];
+    <h3>Ищем предка</h3>
+    const elemsAncestor = elemsDescendant.closest(".lesson");
+    <h3>Непосредственный родительский эллемент</h3>
+    const parentElement = bodyElement.parentElement;
+</div>
+<div>
+    <h3>ПРОВЕРЯЕМ совпадение по названию класса </h3>
+   <br/> const elemsMatches = document.querySelectorAll(".lesson__item-list");
+   <br/> for (const elem of elemsMatches) {
+   <br/> if (elem.matches(`[class$='lesson__item-list_red']`)) {
+   <br/> console.log("Красный");
+   <br/> } else if (elem.matches(`[class$='lesson__item-list_blue']`)){
+   <br/> console.log('Голубой');
+    }
+    }
+</div>
+<div>
+    <h3>Управление CSS классами</h3>
+    <br/>
+    const elementBlue = document.querySelector(".lesson__item-list_blue");
+    <h3>Получил эллемент</h3>
+    const element = document.querySelector('.lesson__item-list_red');
+    <h3>Добавил класс</h3>
+    element.classList.add('active');
+    <h3>Удалил класс</h3>
+    element.classList.remove("active");
+    <h3>Добавил если нет, удалить если есть</h3>
+    element.classList.toggle("active");
+    <h3>Проверить есть или нет такое название класса true,false</h3>
+if (element.classList.contains("active")) {
+<br />console.log('У эллемента есть класс "active"!');
+}
+    <h3>Перечислить все классы эллемента</h3>
+for (const elementClassList of element.classList) {
+<br />console.log(elementClassList);
+}
+    <h3>Изменил имя класса эллемента</h3>
+element.className = 'red';
+    <h3>Показать имя класса эллемента</h3>
+console.log(element.className);
+
+
+
+
+
+
+</div>
+<div>
+    <h3>Управление Стилями CSS</h3>
+    <br/>
+    <h3>Добавил CSS стиль</h3>
+    element.style.color = 'red';
+    <br/>lessonBlock.style.fontSize = '22px';
+    <br/>newTitle.style.textAlign = 'center';<br/>
+    <h3>Удалил значение CSS стиля</h3>
+    newTitle.style.textAlign = '';
+    <h3>Показать стили эллемента записаные в HTML</h3>
+    console.log(newTitle.style);
+    <h3>Получил значение конкретного стиля эллемента из HTML</h3>
+    let titleStyle = newTitle.style.textAlign;
+    <h3>Добавил несколько CSS стилей</h3>
+    newTitle.style.cssText = 
+    <br/>` text-align: center;
+    <br/>font-size: 27px;`
+    <br/><i class="blue">//Но они полностью перепишут CSS стили записаные в HTML</i>
+</div>
+<div>
+    <h3>Вычислил CSS свойство, ТОЛЬКО ЧТЕННИЕ</h3>
+    <br/>
+    <h3>Вычислить CSS свойство</h3>
+    const elementBlueStyle = getComputedStyle(elementBlue );
+    <h3>Вывести необходимое CSS свойство</h3>
+    console.log(elementBlueStyle.fontSize);
+    <h3>Перевёл 22px в просто 22</h3>
+    const elementBlueStyleFontStyle = parseInt(elementBlueStyle.fontSize);
+    <h3>Вычислил CSS свойство Псевдоэллемента</h3>
+    const elemsFourStyle = getComputedStyle(elemsFour, "::marker");
+    <h3>Вывел необходимое CSS свойство Псевдоэллемента</h3>
+    console.log(elemsFourStyle.color);
+</div>
+<div>
+    <h3>Действия с атрибутами</h3>
+    <br/>
+    const lessonText = document.querySelector(".lesson__text");
+    <h3>Проверяем наличие атрибута</h3>
+    console.log(lessonText.hasAttribute('name'));
+    <h3>Получаем значение ат рибута</h3>
+    console.log(lessonText.getAttribute('name'));
+    <h3>Устанавливаем значение атрибута 'value'</h3>
+    lessonText.setAttribute('name','value');
+    <h3>Удаляем атрибут</h3>
+    lessonText.removeAttribute('name');
+    <h3>Получить тег эллемента</h3>
+    console.log(lessonText.tagName);
+    <h3>Скрыть объект</h3>
+    lessonText.hidden = true;
+    <h3>Запросить состояние объекта</h3>
+    console.log(lessonText.hidden);
+    <h3>Вывести объект</h3>
+    lessonText.hidden = false;
+</div>
+<div>
+    <h3>Перебор всех эллементов коллекции</h3>
+for (const item of elemsTwo) {
+<br/> console.log(item);
+}
+</div>
+<div>
+    <h3>Перебор всех эллементов коллекции но с помощью функции</h3>
+    elemsTwo.forEach(item => {
+    <br/> console.log(item);
+    })
+</div>
+<div>
+    <h3>Перебор всех детей включая узлы</h3>
+    for (const node of childNodes) {
+     <br/>console.log(node);
+    }
+</div>
+<div>
+    <h3>Для проверки наличия дочерних эллементов true-false даже без объявления переменной <i class="red">childNodes</i></h3>
+    console.log(bodyElement.hasChildNodes());
+</div>
+</body>
+</html>
