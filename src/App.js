@@ -2,6 +2,10 @@
 import React, { useContext, useState } from "react";
 import { CheatSheet } from './context/context'
 import classses from "./App.css";
+import JavaScript from "./Pages/JavaScript";
+import Navbar from "./component/navbar/Navbar";
+import { BrowserRouter } from "react-router-dom";
+import AppRouter from "./Router/AppRouter";
 
 function App() {
   const [nameClass, setNameClass] = useState("hidden");
@@ -16,28 +20,12 @@ function App() {
 
   return (
     <div className="App">
-
-
-      <h1>JavaScript</h1>
-      {cheatSheet.map(p => 
-       <div className="conteiner" key={p.id} >
-          <div onClick={(e) => change(p.id) } className="item_title">
-              <h3>{p.title}</h3>
-            </div>         
-          <div onClick={(e) => change(p.id)} className={nameClass} id = {p.id}>
-               <div className="text_body" >{p.text}
-               <h3>{p.example} </h3>
-                </div>
-           </div>   
-      </div>
-
-       ) }
-
-
-
-      
-     
-
+      <div className="wrapper">
+       <BrowserRouter>
+         <Navbar/>
+         <AppRouter/>
+       </BrowserRouter>
+       </div>
    </div>
   );
 }
