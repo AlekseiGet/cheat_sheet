@@ -10,7 +10,7 @@ const JavaScript = () => {
         response.classList.toggle("item_text");
     }
     return (
-        <div>
+        <div style={{ background: "rgba(223, 63, 63, 0.677)" }}>
             <h2>JavaScript</h2>
             {cheatSheet.map(p =>
                 <div className="conteiner" key={p.id} >
