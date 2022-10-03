@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/cheat_sheet/static/css/main.3e02acac.css",
-    "main.js": "/cheat_sheet/static/js/main.06f4d8a4.js",
+    "main.css": "/cheat_sheet/static/css/main.82c194d7.css",
+    "main.js": "/cheat_sheet/static/js/main.fd7eae26.js",
     "index.html": "/cheat_sheet/index.html",
-    "main.3e02acac.css.map": "/cheat_sheet/static/css/main.3e02acac.css.map",
-    "main.06f4d8a4.js.map": "/cheat_sheet/static/js/main.06f4d8a4.js.map"
+    "main.82c194d7.css.map": "/cheat_sheet/static/css/main.82c194d7.css.map",
+    "main.fd7eae26.js.map": "/cheat_sheet/static/js/main.fd7eae26.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e02acac.css",
-    "static/js/main.06f4d8a4.js"
+    "static/css/main.82c194d7.css",
+    "static/js/main.fd7eae26.js"
   ]
 }
