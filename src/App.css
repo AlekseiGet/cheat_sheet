@@ -41,7 +41,8 @@
    justify-content: center;
 }
 .text_body{
-  padding: 20px;
+    padding: 20px;
+    text-align: left;
     border: 1px solid red;
     border-radius: 20px;
     background: rgb(97, 95, 95);

@@ -487,6 +487,51 @@ export const HtmlTegs = createContext([
         { title: "Ещё", text: 'Добавлю', example: "Позже", id: 1031 },
 ])
 
+export const CssStyles = createContext([
+        { title: "font-family", text: <pre>
+   {`Тип шрифта:
+    : serif      - с засечками
+    : san-serif  - рубленый без засечек
+    : cursive    - курсив
+    : fantasy    - декоративный
+    : monospace  - ширина символов одинакова
+                `}
+        </pre>, example:<pre>{`Добавить скачаный Шрифт: 
+    
+                `}</pre> , id: 2001 },
+        { title: "font-size ", text: '', example: "", id: 2002 },
+        { title: "font-style", text: '', example: "", id: 2003 },
+        { title: "font-weight", text: '', example: "", id: 2004 },
+        { title: "color", text: '', example: "", id: 2005 },
+        { title: "text-align", text: '', example: "", id: 2006 },
+        { title: "text-decoration", text: '', example: "", id: 2007 },
+        { title: "text-shadow", text: '', example: "", id: 2008 },
+        { title: "text-indent", text: '', example: "", id: 2009 },
+        { title: "text-overflow", text: '', example: "", id: 2010 },
+        { title: "text-transform", text: '', example: "", id: 2011 },
+        { title: "letter-spacing", text: '', example: "", id: 2012 },
+        { title: "line-height", text: '', example: "", id: 2013 },
+        { title: "white-spacing", text: '', example: "", id: 2014 },
+        { title: "word-spacing", text: '', example: "", id: 2015 },
+        { title: "padding", text: '', example: "", id: 2016 },
+        { title: "margin", text: '', example: "", id: 2017 },
+        { title: "width", text: '', example: "", id: 2018 },
+        { title: "height", text: '', example: "", id: 2019 },
+        { title: "border", text: '', example: "", id: 2020 },
+        { title: "border-radius", text: '', example: "", id: 2021 },
+        { title: "overflow", text: '', example: "", id: 2022 },
+        { title: "display", text: '', example: "", id: 2023 },
+        { title: "outline", text: '', example: "", id: 2024 },
+        { title: "box-shadow", text: '', example: "", id: 2025 },
+        { title: "opacity", text: '', example: "", id: 2026 },
+        { title: "visibility", text: '', example: "", id: 2027 },
+        { title: "background", text: '', example: "", id: 2028 },
+        { title: "ПСЕВДОКЛАССЫ", text: 'ищи ниже', example: "", id: 2029 }, 
+        { title: "", text: '', example: "", id: 2030 },
+        { title: "", text: '', example: "", id: 2031 },
+
+        
+])
 
 
 /*
