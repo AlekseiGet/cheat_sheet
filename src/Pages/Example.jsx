@@ -1,7 +1,13 @@
 import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
+import TaskOne from '../component/example/TaskOne';
+import TaskThree from '../component/example/TaskThree';
+import TaskToo from '../component/example/TaskToo';
 import { ExampleDecision } from '../context/context'
 
 const Example = () => {
+  
+
     const [nameClass, setNameClass] = useState("hidden");
     const exampleArr = useContext(ExampleDecision);
     const change = (i) => {
@@ -23,9 +29,13 @@ const Example = () => {
                             <div>{p.example} </div>
                         </div>
                     </div>
+
                 </div>
 
             )}
+           <TaskOne/>
+           <TaskToo/>
+           <TaskThree/>
         </div>
     );
 };

@@ -59,3 +59,19 @@ a{
   top: 0px;
   left:  0px;
 }
+.block{
+  width: max(50vw, 300px);
+    margin: 20px auto;
+    border: 1px solid red;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    background: rgba(0, 0, 0, 0.644);
+}
+.block_title{
+  color: white;
+}
+.block_input{
+  width: 50%;
+  height: 50px;
+  font-size: 25px;
+}

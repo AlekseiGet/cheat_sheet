@@ -496,9 +496,7 @@ export const CssStyles = createContext([
     : fantasy    - декоративный
     : monospace  - ширина символов одинакова
                 `}
-        </pre>, example:<pre>{`Добавить скачаный Шрифт: 
-    
-                `}</pre> , id: 2001 },
+        </pre>, example:<pre>{`Добавить скачаный Шрифт: `}</pre> , id: 2001 },
         { title: "font-size ", text: '', example: "", id: 2002 },
         { title: "font-style", text: '', example: "", id: 2003 },
         { title: "font-weight", text: '', example: "", id: 2004 },
