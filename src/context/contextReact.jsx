@@ -8,9 +8,9 @@ export const ReactSheet = createContext([
     { title: "Зависимость для разработки 'Дэб зависимость'", text: "npm install -D nodemon ", example: "Нужен для того чтобы при каждом изменении в коде не перезапускать сервер он будет делать это автоматически, смотри дальше " , id: 3004 },
     { title: "Дэб зависимость Установил ? измени script: запускающий приложение в режиме разработки", text: ' "scripts": "dev": "nodemon index.js"  это исполняемая команда', example: "В файле 'package.json' 'test': удалить", id: 3005 },
     { title: "запуск скрипта", text: "npm run dev", example: "Перед этим зайди через консоль в папку с сервером 'cd server'", id: 3006 },
-    { title: " pgAdmin 4", text: "запустил программу pgAdmin 4", example: "пароль 'give_me_your_money'", id: 3007 },
+    { title: " pgAdmin 4 - для администрирования и разработки для PostgreSQL и связанных с ней систем управления базами данных", text: "запустил программу pgAdmin 4", example: "пароль 'give_me_your_money'", id: 3007 },
     { title: "создание диаграммы зависимостей", text: "в браузере запустил   https://app.diagrams.net/ и открыл файл 123123", example: " Время в видеоролике : 11мин.13", id: 3008 },
-    { title: "Postman", text: "запустил программу Postman", example: " Время в видеоролике :( 25.15 ) ", id: 3009 },
+    { title: "Postman - это  приложение, способное выполнять запросы API к любому API HTTP. Он обычно используется для тестирования и изучения API-интерфейсов.", text: "запустил программу Postman", example: " Время в видеоролике :( 25.15 ) ", id: 3009 },
     { title: "Установка модулей на VSC", text: "npm i jsonwebtoken", example: "для генерации токена", id: 3010 },
     { title: "Установка модулей на VSC", text: "npm i bcrypt", example: "для хешиирования паролей и не хранить их в базе данных", id: 3011 },
     { title: "декодировщик токенов", text: " https://jwt.io/", example: "декодировщик токенов", id: 3011 },
@@ -19,8 +19,51 @@ export const ReactSheet = createContext([
     { title: "ModX", text: "npm i mobx", example: "стейт менеджнр", id: 3014 },
     { title: "Mobx-lite", text: "npm i mobx-react-lite", example: "Для того чтобы связать ModX с функциональными компонентами React", id: 3015 },
     { title: "Bootstrap", text: "npm install react-bootstrap bootstrap", example: "Отвечает за вёрстку", id: 3016 },
-    { title: "Swith не работает", text: "ответ завтра", example: "", id: 3017 },
-    { title: "", text: "", example: "", id: 3018 },
+    { title: " <Routes> для навигации по приложению", text: <pre>
+        {`import {Routes, Route, Navigate} from 'react-router-dom'
+          import { authRoutes, publicRoutes } from '../routes';
+          ...
+                  const isAuth = false //будет показывать авторизован пользователь или нет
+          ...        
+      <Routes>
+          {isAuth && authRoutes.map(({path, Component }) => //проверяю если авторизован == true
+             <Route key={path} path={path} element={<Component/> } exact />
+          )}
+            {publicRoutes.map(({ path, Component }) => 
+               <Route key={path} path={path} element={<Component />} exact />
+            )}
+     </Routes> 
+      `}
+    </pre> ,
+     example: <pre>
+        {
+ `  routes.js
+           //Только для авторизованых пользователей
+           export const authRoutes = [
+               {path: ADMIN_ROUTE , Component: Admin }, 
+               {path: BASKET_ROUTE, Component: Basket}
+           ]
+         
+           //Для всех пользователей
+           export const publicRoutes = [
+               {path: SHOP_ROUTE, Component: Shop},
+               {path: LOGIN_ROUTE, Component: Auth },
+               {path: REGISTRATION_ROUTE, Component: Auth},
+               {path: DEVICE_ROUTE + '/:id' ,  Component: DevicePage }
+             ]
+             //ADMIN_ROUTE - ссылка на константу с адресом в отдельном файле export const ADMIN_ROUTE = '/admin'
+             //Component: Admin - ссылка на файл страницы в папке page`
+        }
+     </pre>, id: 3017 },
+    { title: "<Navigate ... отработает если ни один из адресов не будет подходить", text: <pre>
+        {
+           `<Route path='*' element={<Navigate to={SHOP_ROUTE} />} />`
+        }
+    </pre>, example: <pre>
+        {
+            `SHOP_ROUTE - ссылка на константу с адресом в отдельном файле export const ADMIN_ROUTE = '/shop'` 
+        }
+    </pre>, id: 3018 },
     { title: "", text: "", example: "", id: 3019 },
     { title: "", text: "", example: "", id: 3020 },
     { title: "", text: "", example: "", id: 3021 },
