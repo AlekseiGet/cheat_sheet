@@ -64,10 +64,161 @@ export const ReactSheet = createContext([
             `SHOP_ROUTE - ссылка на константу с адресом в отдельном файле export const ADMIN_ROUTE = '/shop'` 
         }
     </pre>, id: 3018 },
-    { title: "", text: "", example: "", id: 3019 },
-    { title: "", text: "", example: "", id: 3020 },
-    { title: "", text: "", example: "", id: 3021 },
-    { title: "", text: "", example: "", id: 3022 },
+    { title: "NavBar из Bootstrap", text: 
+        <pre>{`
+          import Container from 'react-bootstrap/Container';
+          import Nav from 'react-bootstrap/Nav';
+          import Navbar from 'react-bootstrap/Navbar';
+          import { NavLink } from 'react-router-dom';
+
+           <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
+       `}</pre>, 
+      example: <pre>{`
+           <Navbar.Brand href="#home">Navbar</Navbar.Brand>  ЗАМЕНИЛ  <NavLink to={SHOP_ROUTE } >Купи девайс</NavLink>
+           me-auto НА ml-auto Сдвинется вправо и можно добавить стиль style={{color: 'red'}} 
+           `}</pre> , id: 3019 },
+    { title: "Кнопки из Bootstrap", text: <pre>{`
+        <Button variant={'outline-light '}> Обычная кнопка </Button>
+        <CloseButton> Кнопка закрытия - КРЕСТИК </CloseButton>
+    `} </pre>, example: <pre>{`
+       variant={'outline-light '} -- изменит вид кнопки
+       
+    `} </pre>, id: 3020 },
+    {title: "NavBar С проверкой на авторизацию",
+        text: <pre>{`
+    import { observer } from 'mobx-react-lite';
+
+         const NavBar =  observer(() => {
+    const {user} = useContext(Context)
+    //  https://react-bootstrap.github.io/components/navbar/ Скопировал и сюда вставил, вот и весь НафБар (время 1.25)
+    
+    return (
+       <Navbar bg="dark" variant="dark">
+         <Container>          
+          <NavLink style={{ color: 'red' }} to={SHOP_ROUTE } >Купи девайс</NavLink>
+            {user.isAuth ?
+                    <Nav className="ml-auto" >
+                        <Button variant={'outline-light '} >Админ Панель</Button>
+                        <Button variant={'outline-light '} >Войти</Button>
+                    </Nav>
+                        : 
+                    <Nav className="ml-auto" >
+                        <Button variant={'outline-light '} onClick={()=> user.setIsAuth(true) } >Авторизация</Button>
+                    </Nav> 
+            }
+        </Container>
+      </Navbar>
+    );
+});
+    `} </pre>, example: <pre>{`
+         observer -- Обернуть в него чтобы отслеживал в режиме реального времени и перерисовывал
+         isAuth Проверяет на true
+         isAuth В файле UserStore
+    `} </pre>, id: 3021 },
+    {title: "Правки для видео", text: <pre>{`
+        Тимур, спасибо!👍
+Ремарки к видео (сентябрь 2022), поехали:
+(Backend не претерпел изменений, а по frontend изменений хватает)
+
+1:11:05 В index.js вместо:
+ReactDOM.render(
+  <App/>,
+  document.getElementById('root')
+)
+вызываем:
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+    <App />
+)
+
+1:13:52
+Вместо:
+import {Switch, Roure, Redirect} from 'react-router-dom'
+объявляем:
+import {Routes, Roure, Navigate} from 'react-router-dom'
+ибо Switch, Redirect упразднены в react-router-dom
+
+
+1:17:02 - 1:18:58 меняем Switch -> Routes, component -> element
+В конструкции:
+    <Switch>
+      {isAuth && authRoutes.map(({path, Component}) =>
+        <Route key={path} path={path} component={Component} exact/>
+      )}
+      {publicRoutes.map(({path, Component}) =>
+      <Route key={path} path={path} component={Component} exact/>
+      )}
+    </Switch>
+меняем:
+1) Switch на Routes
+2) component={Component} на element={<Component/>}
+
+
+1:19:34 Меняем Redirect на Navigate
+т.е. строку:
+    <Redirect to={SHOP_ROUTE}/>
+меняем на 
+    <Route path='*' element={<Navigate to={SHOP_ROUTE}/>} />
+или
+    <Route path='*' element={<Navigate to='/'/>} />
+1й вариант предпочтительнее, т.к. привязан к константе.
+
+1:29:23 Card располагается в react-bootstrap:
+import {Container, Form, Card} from 'react-bootstrap'
+
+1:30:54 - 1:31:45 Смена игрового состава: Row -> Form
+<Row> отказался работать с указанными свойствами. Его замена на <Form> дает нужный эффект - Текст 'Нет аккаунта?...' и кнопка размещаются на одной строке.
+
+1:37:34 Row -> Form, т.к. Row при className='d-flex' не ставит бренды в линейку
+
+1:40:13 Row -> Form (DeviceList.js)
+Здесь оставляем Row, т.к. при Form карточки товаров размещаются в линию, а должны переноситься по 4 шт в линии.
+
+1:44:26 useHistory заменен на useNavigate (DeviceItem.js)
+Поэтому вместо:
+import { useHistory } from "react-router-dom"
+const history = useHistory()
+вызываем:
+import { useNavigate } from "react-router-dom"
+const navigate = useNavigate()
+Или можно оставить const history = useNavigate(), если не хотите менять название переменной.
+
+1:45:00 вместо history.push() вызываем navigate()
+
+1:46:21 Row (DevicePage.js)
+Меняем на Form, так как Row не воспринимает align-items-center
+
+1:47:54 Row (DevicePage.js) - здесь ОК
+
+1:49:26 Row (DevicePage.js) - здесь ОК
+
+1:49:38 Row (DevicePage.js) - здесь ОК
+
+1:50:43 Тимур щелкнул по КупиДевайс и перешел на главную страницу... а я нет.
+В NavBar.js есть тег Navlink, у которого наименование атрибута - to - надо заменить на href
+
+1:50:57 вместо useHistory используем useNavigate (см. выше)
+
+1:59:50 Row (CreareDevice.js) - здесь ОК
+
+2:03:06 У меня REACT_APP_API_URL в консоле показала undefined. Вылечилось перезапуском клиента.
+
+??? 2:09:15 user.setUser(user)
+??? Может надо user.setUser(data)?
+
+2:10:33  вместо useHistory используем useNavigate (см. выше)
+    `} </pre>, example: <pre>{`
+        
+    `} </pre>, id: 3022 },
     { title: "", text: "", example: "", id: 3023 },
     { title: "", text: "", example: "", id: 3024 },
    
