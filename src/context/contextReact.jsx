@@ -95,30 +95,56 @@ export const ReactSheet = createContext([
     `} </pre>, id: 3020 },
     {title: "NavBar С проверкой на авторизацию",
         text: <pre>{`
-    import { observer } from 'mobx-react-lite';
+        import React from 'react';
+import Container from 'react-bootstrap/esm/Container';
+import Form from 'react-bootstrap/esm/Form';
+import Card from 'react-bootstrap/esm/Card';
+import Button from 'react-bootstrap/esm/Button';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
+import { Link, useLocation } from 'react-router-dom';
 
-         const NavBar =  observer(() => {
-    const {user} = useContext(Context)
-    //  https://react-bootstrap.github.io/components/navbar/ Скопировал и сюда вставил, вот и весь НафБар (время 1.25)
-    
+const Auth = () => {
+    const location = useLocation()
+    const isLogin = location.pathname === LOGIN_ROUTE
+
     return (
-       <Navbar bg="dark" variant="dark">
-         <Container>          
-          <NavLink style={{ color: 'red' }} to={SHOP_ROUTE } >Купи девайс</NavLink>
-            {user.isAuth ?
-                    <Nav className="ml-auto" >
-                        <Button variant={'outline-light '} >Админ Панель</Button>
-                        <Button variant={'outline-light '} >Войти</Button>
-                    </Nav>
-                        : 
-                    <Nav className="ml-auto" >
-                        <Button variant={'outline-light '} onClick={()=> user.setIsAuth(true) } >Авторизация</Button>
-                    </Nav> 
-            }
+        <Container
+        className="d-flex justify-content-center align-items-center "
+        style={{height: window.innerHeight - 54}} >
+            <Card style={{width: 600}} className="p-5 " >
+                <h2  className='m-auto' >{isLogin ? "Авторизация" : "Регистрация" } </h2>
+                <Form className='d-flex flex-column' >
+                    <Form.Control
+                    className='mt-3'
+                    placeholder='введите ваш адресс...'
+                    />
+                    <Form.Control
+                        className='mt-3'
+                        placeholder='введите ваш пароль...'
+                    />
+                    <Form className='d-flex justify-content-between mt-3 pl-3 pr3' >
+                        {isLogin ?
+                             <div >
+                              Нет аккаунта?  <Link to={REGISTRATION_ROUTE} >Зарегестрируйтесь</Link>   
+                            </div>
+                        :
+                            <div >
+                             Есть аккаунта?  <Link to={LOGIN_ROUTE} >Войдите</Link>
+                            </div>
+                        }
+                       
+                        <Button  variant={"outline-success"} >
+                            {isLogin ? "Войти" : "Регистрация"}
+                        </Button>
+                    </Form>
+                    
+                </Form>
+            </Card>
         </Container>
-      </Navbar>
     );
-});
+};
+
+export default Auth;
     `} </pre>, example: <pre>{`
          observer -- Обернуть в него чтобы отслеживал в режиме реального времени и перерисовывал
          isAuth Проверяет на true
@@ -219,8 +245,59 @@ const navigate = useNavigate()
     `} </pre>, example: <pre>{`
         
     `} </pre>, id: 3022 },
-    { title: "", text: "", example: "", id: 3023 },
-    { title: "", text: "", example: "", id: 3024 },
+    {title: " observer" , text: <pre>{`
+    import { observer } from 'mobx-react-lite';
+
+         const NameFunct = observer(() => {
+         })
+    `} </pre>, example: "Что бы  mobx мог отслеживать  и перерисовывать в режиме реального времени", id: 3023 },
+    {title: " useLocation()", text: <pre>{`
+    const location = useLocation()
+    console.log(location);`}</pre>, example: "Можно получить маршрут в сторке запроса", id: 3024 },
+    { title: "Колонка с выбором", text: <pre>{`
+       import React, { useContext } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Context } from '..';
+import ListGroup from "react-bootstrap/ListGroup"
+
+const TypeBar = observer(() => {
+    const {device} = useContext(Context)
+    return (
+        <ListGroup>
+            {device.types.map( type => 
+                <ListGroup.Item 
+                   active={type.id === device.selectedType.id}
+                   onClick={()=> device.setSelectedType(type)}
+                   key={type.id}>
+
+                    {type.name}
+
+                </ListGroup.Item>
+                )}
+        </ListGroup>
+    );
+});
+
+export default TypeBar;
+    `}</pre>, example: "", id: 3025 },
+    { title: "useNavigate()// что бы знать какой товар выбран", text: <pre>{`
+      import { useNavigate } from 'react-router-dom';
+      import { DEVICE_ROUTE } from '../utils/consts';
+
+      const history = useNavigate()// что бы знать какой товар выбран
+
+      .....
+
+        <Col md={3} className={'mt-3'} onClick={() => history(DEVICE_ROUTE + '/' + device.id)} >....
+    `}</pre>, example: " По клику на объекте добавляем  / и id", id: 3026 },
+    { title: "", text: "", example: "", id: 3027 },
+    { title: "", text: "", example: "", id: 3028 },   
+    { title: "", text: "", example: "", id: 3029 },
+    { title: "", text: "", example: "", id: 3030 },
+    { title: "", text: "", example: "", id: 3031 },
+    { title: "", text: "", example: "", id: 3032 },
+    { title: "", text: "", example: "", id: 3033 },
+    { title: "", text: "", example: "", id: 3034 },
    
     { title: "Инпут с двухсторонней связкой", text: "const [forInput, setForInput] = useState({ nameInput: ''})", example: " <input className='block_input' placeholder='Написать функци' type='text' value={forInput.nameInput} onChange={e => setForInput({ nameInput: e.target.value })} />", id: 3100 },
     { title: "Кнопка с функцией", text: "function increment() { setLikes(likes + 1)}", example: " <button onClick={increment}>Добавить</button>", id: 3101 },
