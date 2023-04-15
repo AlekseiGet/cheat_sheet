@@ -18,7 +18,7 @@ const Example = () => {
 
     return (
         <div>
-            <h2>Примеры решений задачь</h2>
+            <h2>Примеры решений задач</h2>
             {exampleArr.map(p =>
                 <div className="conteiner" key={p.id} >
                     <div onClick={(e) => change(p.id)} className="item_title">
